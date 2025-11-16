@@ -1,0 +1,439 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f8f8;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+}
+
+/* =========================================
+   HERO ESTILO LOUIS VUITTON (3 VIDEOS)
+========================================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;        /* altura completa */
+  overflow: hidden;
+}
+
+/* Contenedor de los videos */
+.hero-videos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-videos video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.hero-videos video.active {
+  opacity: 1;
+}
+
+/* Capa oscura elegante */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+  z-index: 0;
+}
+
+/* Texto centrado y animado */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 5;
+  animation: fadeUp 1.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* =========================================
+   NAVBAR ESTILO LOUIS VUITTON
+========================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  background-color: transparent;
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* Texto blanco */
+.navbar *, 
+.nav-right a,
+.nav-center .logo {
+  color: white !important;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-btn {
+  background: none;
+  border: 2px solid #d4af37;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 15px;
+  color: #d4af37;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+  background-color: #2ecc71;
+  color: #fff;
+  border-color: #2ecc71;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 3px;
+}
+
+.search i {
+  margin-right: 6px;
+  color: #d4af37;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 15px;
+  color: white;
+  width: 130px;
+}
+
+.search input::placeholder {
+  color: #ccc;
+}
+
+.nav-center .logo {
+  font-size: 24px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-right a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-right a:hover {
+  color: #d4af37 !important;
+}
+
+/* NAVBAR HOVER → se oscurece */
+.navbar:hover {
+  background-color: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+}
+
+/* NAVBAR SCROLL → negro fuerte */
+.navbar.scrolled {
+  background-color: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   MENÚ LATERAL
+========================================= */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 260px;
+  height: 100%;
+  background-color: #111;
+  color: white;
+  transition: left 0.4s ease;
+  padding: 40px 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #d4af37;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #2ecc71;
+}
+
+.sidebar-links {
+  list-style: none;
+  margin-top: 30px;
+  padding: 0;
+}
+
+.sidebar-links li {
+  margin: 20px 0;
+}
+
+.sidebar-links a {
+  color: #d4af37;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-links a:hover {
+  color: #2ecc71;
+  transform: translateX(5px);
+}
+
+/* =========================================
+   SECCIONES GENERALES
+========================================= */
+
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #1a1a1a;
+}
+
+/* SERVICIOS */
+.servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.servicio {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.servicio h3 {
+  margin: 15px 0;
+  color: #d4af37;
+}
+
+/* GALERÍA */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.galeria img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* CONTACTO */
+.contacto {
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contacto a {
+  color: #d4af37;
+  text-decoration: none;
+}
+
+.contacto a:hover {
+  color: #2ecc71;
+}
+
+/* BOTÓN */
+.btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #d4af37, #e6c84a);
+  color: white;
+  padding: 14px 36px;
+  margin-top: 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(212,175,55,0.3);
+}
+
+.btn:hover {
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(46,204,113,0.4);
+}
+
+/* MAPA */
+.mapa {
+  margin: 30px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  background: #f9f9f9;
+  padding: 10px;
+}
+
+/* FOOTER */
+footer {
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(45deg, #d4af37, #e6c84a);
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+  transition: all 0.3s ease;
+  z-index: 200;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-icon {
+  width: 45px;
+  height: 45px;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+    padding: 120px 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.3rem;
+  }
+
+  .nav-center {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px 20px;
+  }
+
+  .search input {
+    display: none;
+  }
+
+  .galeria img {
+    height: 180px;
+  }
+}
